@@ -1,0 +1,97 @@
+<!DOCTYPE html><html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TRATTORE Chatbot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0d0d0d;
+      color: gold;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+    header img {
+      max-width: 200px;
+    }
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: gold;
+    }
+    .chatbox {
+      width: 90%;
+      max-width: 600px;
+      background-color: #1a1a1a;
+      border: 2px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 0 20px gold;
+    }
+    .message {
+      margin: 10px 0;
+    }
+    .user {
+      text-align: right;
+      color: white;
+    }
+    .bot {
+      text-align: left;
+      color: gold;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid gold;
+      background-color: #0d0d0d;
+      color: white;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: gold;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo_trattore.png" alt="TRATTORE Logo" />
+    <h1>TRATTORE</h1>
+    <p>Il tuo assistente personale con stile</p>
+  </header>  <div class="chatbox" id="chat">
+    <div class="message bot">Ciao! Sono TRATTORE. Chiedimi quello che vuoi!</div>
+  </div>  <input type="text" id="userInput" placeholder="Scrivi la tua domanda..." />
+  <button onclick="sendMessage()">Invia</button>  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const chat = document.getElementById("chat");
+      const userText = input.value;
+      if (!userText) return;
+
+      const userMsg = document.createElement("div");
+      userMsg.className = "message user";
+      userMsg.textContent = userText;
+      chat.appendChild(userMsg);
+
+      const botMsg = document.createElement("div");
+      botMsg.className = "message bot";
+      botMsg.textContent = "Risposta finta di TRATTORE: Elaboro la tua domanda su '" + userText + "'...";
+      chat.appendChild(botMsg);
+
+      input.value = "";
+      chat.scrollTop = chat.scrollHeight;
+    }
+  </script></body>
+</html>
